@@ -19,6 +19,7 @@ export class RegisterComponent  {
     mobileNo:'',
    file:''
   }
+  public hello : string;
   onFileChange(event){
      this.regObj.file = event.target.files[0];
   }
