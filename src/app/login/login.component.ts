@@ -16,14 +16,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   loginUser(looginData){
-    alert(looginData)
-   // let formObj = looginData.getRawValue(); // {name: '', description: ''}
-
-   // let serializedForm = JSON.stringify(formObj);
-    console.log(looginData);
+    sessionStorage.clear();
     this.regService.loginUser(looginData).subscribe(
       (succuessData)=> {
         sessionStorage.setItem("user","userCreated");
+        sessionStorage.setItem("userData",JSON.stringify(succuessData.user));
         this.route.navigate(['/post']);
       }
     ),

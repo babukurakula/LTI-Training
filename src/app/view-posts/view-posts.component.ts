@@ -12,11 +12,14 @@ export class ViewPostsComponent implements OnInit {
   constructor(private regService :RegisterService) { }
   public posts :any;
   public postView : any;
+  public activePostId : number;
 
   getAllPosts(){
     this.regService.getAllPosts().subscribe(
       (sucessData) =>{
         this.posts = sucessData;
+        this.activePostId = sucessData[0].postId;
+        this.getPost(sucessData[0].postId)
         console.log(" post sucess "+ this.posts);
 
       },
@@ -26,7 +29,8 @@ export class ViewPostsComponent implements OnInit {
     )
   }
   getPost(postId:number){
-    this.regService.getPosts(postId).subscribe(
+    this.activePostId = postId;
+    this.regService.getPosts(this.activePostId).subscribe(
       (sucessData) =>{
         this.postView = sucessData;
         console.log(" post sucess "+ this.posts);
@@ -41,20 +45,22 @@ export class ViewPostsComponent implements OnInit {
     this.regService.addLike(type,id).subscribe(
       (sucessData) =>{
         console.log(" post sucess "+ this.posts);
-        this.getPost(2);
+        this.getPost(this.activePostId);
       },
       (errorData) =>{
         console.log("post errorData : "+errorData);
       }
     )
   }
-  addComment(commentVall){
-    commentVall['postId']=2;
+  addComment(commentForm){
+    let commentVall = commentForm.value;
+    commentVall['postId']=this.activePostId;
     this.regService.addComment(commentVall).subscribe(
       (sucessData) =>{
-        console.log(" post sucess "+ this.posts);
-        this.getAllPosts();
-        this.getPost(2);
+        console.log(" post sucess "+ this.activePostId);
+        //this.getAllPosts();
+        this.getPost(this.activePostId);
+        commentForm.reset();
       },
       (errorData) =>{
         console.log("post errorData : "+errorData);
@@ -63,7 +69,6 @@ export class ViewPostsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getAllPosts();
-    this.getPost(2);
   }
 
 }
