@@ -56,6 +56,25 @@ public class UserLoginService implements IUserLoginService {
 		return response;
 		
 	}
+	public ResponseEntity<ResultVO> loginUser(RegistrationVO regVO) {
+		List<User> user = userRepo.findByUserNameAndIsActiveAndIsDeleted(regVO.getUserName(), "Y", "N");
+		if(user != null && user.size() > 0) {
+			if(user.get(0).getPassword().equals(regVO.getPassword())) {
+				ResultVO resVo = new ResultVO();
+				resVo.setMessage("User Login Success");
+				resVo.setStatus(HttpStatus.OK.value());
+				ResponseEntity<ResultVO> response = 
+						new ResponseEntity<ResultVO>(resVo, HttpStatus.OK);
+				return response;
+			}
+		}
+		ResultVO resVo = new ResultVO();
+		resVo.setMessage("User Login Field");
+		resVo.setStatus(HttpStatus.NOT_FOUND.value());
+		ResponseEntity<ResultVO> response = 
+				new ResponseEntity<ResultVO>(resVo, HttpStatus.NOT_FOUND);
+		return response;
+	}
 	public String fileUpload(MultipartFile file) throws IOException {
 		String filePath="D:\\";
 		File f = new File(filePath+"asserts");
@@ -73,6 +92,7 @@ public class UserLoginService implements IUserLoginService {
 		FileOutputStream out = new FileOutputStream(f);
 		out.write(file.getBytes());
 		out.close();	
+		filePath = filePath +"\\"+ file.getOriginalFilename();
 		return filePath;
 	}
 	@ExceptionHandler(IOException.class)
