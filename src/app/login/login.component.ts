@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../services/register.service';
+import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private  regService : RegisterService ,private route : Router) { }
 
+  private form : FormGroup;
   ngOnInit(): void {
+  }
+  loginUser(looginData){
+    alert(looginData)
+   // let formObj = looginData.getRawValue(); // {name: '', description: ''}
+
+   // let serializedForm = JSON.stringify(formObj);
+    console.log(looginData);
+    this.regService.loginUser(looginData).subscribe(
+      (succuessData)=> {
+        sessionStorage.setItem("user","userCreated");
+        this.route.navigate(['/post']);
+      }
+    ),
+    (errorData) => {
+
+    }
   }
 
 }

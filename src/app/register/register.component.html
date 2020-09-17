@@ -17,29 +17,29 @@
                     <div class="row m_top20">
                         <div class="col-12">
                             <div class="loginFormCls">
-                                <form  (ngSubmit)="createUser()">
+                                <form  #signupForm="ngForm" (ngSubmit)="createUser(signupForm.value)">
                                     <div class="form-group row">
                                       <label for="userNameId" class="col-sm-2 col-form-label offset-2">Email Id (User Name)</label>
                                       <div class="col-sm-4">
-                                        <input type="email" class="form-control" id="userNameId"  name="userName" [(ngModel)]="regObj.userName" placeholder="Email"/>
+                                        <input type="email" class="form-control" id="userNameId"  name="userName" ngModel [(ngModel)]="regObj.userName" placeholder="Email"/>
                                       </div>
                                     </div>
                                     <div class="form-group row">
                                       <label for="inputPassword3" class="col-sm-2 offset-2 col-form-label">First Name</label>
                                       <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="firstNameId" name="firstName" [(ngModel)]="regObj.firstName" placeholder="First name"/>
+                                        <input type="text" class="form-control" id="firstNameId" name="firstName" ngModel [(ngModel)]="regObj.firstName" placeholder="First name"/>
                                       </div>
                                     </div>s
                                     <div class="form-group row">
                                         <label for="lastNameId" class="col-sm-2 offset-2 col-form-label">Last Name</label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control" id="lastNameId" name="lastName" [(ngModel)]="regObj.lastName" placeholder="Last name"/>
+                                          <input type="text" class="form-control" id="lastNameId" name="lastName" ngModel [(ngModel)]="regObj.lastName" placeholder="Last name"/>
                                         </div>
                                       </div>
                                       <div class="form-group row">
                                         <label for="passwordId" class="col-sm-2 offset-2 col-form-label">Password</label>
                                         <div class="col-sm-4">
-                                          <input type="password" class="form-control" id="passwordId" name="password" [(ngModel)]="regObj.password" placeholder="Password"/>
+                                          <input type="password" class="form-control" id="passwordId" ngModel name="password" [(ngModel)]="regObj.password" placeholder="Password"/>
                                         </div>
                                       </div>
                                       <div class="form-group row">
@@ -51,13 +51,13 @@
                                       <div class="form-group row">
                                         <label for="mobileNoId" class="col-sm-2 offset-2 col-form-label"> Mobile</label>
                                         <div class="col-sm-4">
-                                          <input type="text" class="form-control" id="mobileNoId" maxlength="10" name="mobileNo" [(ngModel)]="regObj.mobileNo" placeholder="Mobile Number"/>
+                                          <input type="text" class="form-control" id="mobileNoId" maxlength="10" name="mobileNo" ngModel [(ngModel)]="regObj.mobileNo" placeholder="Mobile Number"/>
                                         </div>
                                       </div>
                                       <div class="form-group row">
                                         <label for="profileId" class="col-sm-2 offset-2 col-form-label">Profile Pic</label>
                                         <div class="col-sm-4">
-                                          <input type="file" class="form-control" id="profileId" name="profilePic"   />
+                                          <input type="file" class="form-control" (change)="onFileChange($event)" id="profileId" name="profilePic"   />
                                         </div>
                                       </div>
 
@@ -65,6 +65,8 @@
                                       <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Sign in</button>
                                       </div>
+                                    </div>
+                                    <div>
                                     </div>
                                   </form>
                             </div>

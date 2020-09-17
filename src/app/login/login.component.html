@@ -17,17 +17,17 @@
                     <div class="row m_top20">
                         <div class="col-12">
                             <div class="loginFormCls">
-                                <form>
+                                <form #loginForm="ngForm" (submit)="loginUser(loginForm.value)">
                                     <div class="form-group row">
                                       <label for="inputEmail3" class="col-sm-2 col-form-label offset-2">Email</label>
                                       <div class="col-sm-4">
-                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                        <input type="email" class="form-control" id="inputEmail3" name="userName" ngModel #userName="ngModel" placeholder="Email">
                                       </div>
                                     </div>
                                     <div class="form-group row">
                                       <label for="inputPassword3" class="col-sm-2 offset-2 col-form-label">Password</label>
                                       <div class="col-sm-4">
-                                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                                        <input type="password" class="form-control" name="password" ngModel #password="ngModel" id="inputPassword3" placeholder="Password">
                                       </div>
                                     </div>
 

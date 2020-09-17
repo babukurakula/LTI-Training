@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MenuComponent } from './menu/menu.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { ViewPostsComponent } from './view-posts/view-posts.component';
 
 const routes: Routes = [
   {path : "", redirectTo: "login", pathMatch : "full"},
@@ -16,6 +18,12 @@ const routes: Routes = [
   {
     path:"menu",component:MenuComponent
   },
+  {
+    path: 'post' ,component:AddPostComponent
+  },
+  {
+    path:'view-posts' ,component:ViewPostsComponent
+  }
 
 
 ];
