@@ -61,6 +61,7 @@ public class UserLoginService implements IUserLoginService {
 		if(user != null && user.size() > 0) {
 			if(user.get(0).getPassword().equals(regVO.getPassword())) {
 				ResultVO resVo = new ResultVO();
+				resVo.setUser(user.get(0));
 				resVo.setMessage("User Login Success");
 				resVo.setStatus(HttpStatus.OK.value());
 				ResponseEntity<ResultVO> response = 
