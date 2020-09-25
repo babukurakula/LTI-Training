@@ -1,0 +1,103 @@
+<div class="row">
+    <div class="col-sm-6 p_right10_per">
+         <ng-container>
+             <div class="m_top20"  *ngFor="let post of posts">
+                 <div class="row post-view" (click)="getPost(post.postId)">
+                  <div class="col-sm-8">
+                    <h5>{{post.post}}</h5>
+                    <span>{{post.date}}</span>
+                  </div>
+                 <div class="col-sm-2 b_left2px">
+                     <span> 
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-text" fill="currentColor" >
+                            <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path fill-rule="evenodd" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                     </span>
+                    <p>{{post.noOfCmts}}</p>
+                  </div>
+                 <div class="col-sm-2 b_left2px">
+                  <span> 
+                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-text" fill="currentColor" >
+                         <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                         <path fill-rule="evenodd" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                     </svg>
+                  </span>
+                  <p>{{post.likes}}</p>
+                  </div>
+               </div>
+             </div>
+         </ng-container>
+    </div>
+    <div class="col-sm-6 comment-view">
+      <div class=" m_top20">
+                  <div class="card">PostLikes
+                     <div class="card-header">{{postView.date}}<h6 class="comm-tag">{{postView.tag}}</h6></div>
+                     <div class="post-view-1 card-body"> {{postView.post}}
+                        <span style="float: right;" > 
+                           <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-text" fill="currentColor" >
+                                 <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                 <path fill-rule="evenodd" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                           </svg>
+                      </span>
+                      <p style="float: right;">{{postView.postLikes}} </p>
+                      <span style="float: right;"  (click)="addLike('post',postView.postId)" style="position: absolute;right:-20px;border:1px solid #4a4643"> 
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-text" fill="currentColor" >
+                              <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                              <path fill-rule="evenodd" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                   </span>
+                     </div>
+                  </div>
+            <ng-container>
+               <div class="m_top20"  *ngFor="let post of postView.postCmtVos">
+                   <div class="row post-view-comment m_left30">
+                        <div class="col-sm-10">
+                           <h6>{{post.tag}}</h6>
+                           <span>{{post.comment}}</span>
+                           <span style="float: right;" (click)="addLike('comment',post.commentId)"> 
+                                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-text" fill="currentColor" >
+                                       <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                       <path fill-rule="evenodd" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                                 </svg>
+                            </span>
+                        </div>
+                        <div class="col-sm-2 b_left2px">
+                           <span> 
+                              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-text" fill="currentColor" >
+                                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                    <path fill-rule="evenodd" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                              </svg>
+                           </span>
+                           <p>{{post.cmtLikes}}</p>
+                        </div> 
+                   </div>
+               </div>
+           </ng-container>
+           <div class="m_top20">
+              <form #commentForm="ngForm" (ngSubmit)="addComment(commentForm)">
+               <div class="form-group row">
+                  <label for="userNameId" class="col-sm-2 col-form-label offset-2">Comment</label>
+                  <div class="col-sm-4">
+                    <textarea  class="form-control"   name="post" ngModel #comment="ngModel"></textarea>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="userNameId" class="col-sm-2 col-form-label offset-2">Add Tag</label>
+                  <div class="col-sm-4">
+                    <input type="text" class="form-control"   name="tag" ngModel #tag="ngModel" />
+                    <input type="hidden" class="form-control"  value="2" name="postId" ngModel #postId="ngModel" />
+
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-2 offset-4">
+
+                    <button type="submit" class="form-control btn btn-primary btn-sm"> Post Now</button> 
+                  </div>
+                </div>
+              </form>
+           </div>
+      </div>
+    </div>
+</div>

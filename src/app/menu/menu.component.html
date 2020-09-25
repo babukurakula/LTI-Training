@@ -5,8 +5,11 @@
                 <ul class="nav nav-pill nav-justified">
                   <!-- href works sync : reload the page-->
                   <!-- href with [routerLink] : async -->
-                  <li class="nav-item"><a class="float-left nav-link btn btn-outline-primary " [routerLink]="['/login']">LOGIN</a></li>
-                  <li class="nav-item"><a class="float-right nav-link btn-secondary" [routerLink]="['/register']">REGISTER</a></li>                 
+                  <li class="nav-item" *ngIf="!auth.isUserLoggedIn()"><a class="float-left nav-link btn btn-outline-primary " [routerLink]="['/login']">LOGIN</a></li>
+                  <li class="nav-item" *ngIf="!auth.isUserLoggedIn()"><a class="float-right nav-link btn-secondary" [routerLink]="['/register']">REGISTER</a></li>
+                  <li class="nav-item" *ngIf="auth.isUserLoggedIn()"><a class="float-right nav-link btn-secondary" [routerLink]="['/post']">Add Post</a></li>
+                  <li class="nav-item" *ngIf="auth.isUserLoggedIn()"><a class="float-right nav-link btn-secondary" [routerLink]="['/view-posts']">View Posts</a></li>                 
+                  <li class="nav-item" *ngIf="auth.isUserLoggedIn()" (click)="auth.logout()"><a class="float-right nav-link btn-secondary" [routerLink]="['/login']">Log Out</a></li>                 
                 </ul>
               </div>
         </div>
